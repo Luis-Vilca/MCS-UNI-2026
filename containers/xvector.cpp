@@ -59,4 +59,15 @@ void DemoVector() {
   of << v2 << endl;
   of << v3 << endl;
   of.close();
+
+  XVector<VectorTraits<T3>> v4, v5, v6;
+
+  ifstream in("Output.txt");
+  in >> v4;
+  in >> v5;
+  in >> v6;
+  cout << v4 << endl;
+  cout << v5 << endl;
+  cout << v6 << endl;
+  in.close();
 }

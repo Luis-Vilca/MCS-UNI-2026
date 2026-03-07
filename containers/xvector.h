@@ -94,12 +94,27 @@ ostream &operator<<(ostream &os, XVector<Traits> &v) {
 // Operador para leer un XVector desde un stream
 template <typename Traits>
 istream &operator>>(istream &is, XVector<Traits> &v) {
-  // value_type value;
-  // while (is >> value) {
-  //     v.PushBack(value);
-  // }
+  
+  string line;
+  getline(is, line);
+
+  auto start = line.find('[');
+  auto end = line.find(']');
+  if (start == string::npos || end == string::npos) 
+    return is;
+
+  string content = line.substr(start + 1, end - start - 1);
+
+  stringstream ss(content);
+  typename Traits::value_type value;
+
+  while (ss >> value) {
+    v.PushBack(value);
+  }
+
   return is;
 }
+
 
 void DemoVector();
 
